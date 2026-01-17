@@ -1,0 +1,58 @@
+openapi: 3.0.0
+info:
+  title: WhatsApp Messaging API
+  description: API for sending WhatsApp messages using Cloud API
+  version: 1.0.0
+servers:
+  - url: http://localhost:3000
+    description: Local server
+paths:
+  /api/messages:
+    post:
+      summary: Send a WhatsApp message
+      description: Sends a template message with an image attachment to a WhatsApp user.
+      requestBody:
+        required: true
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                file:
+                  type: string
+                  format: binary
+                  description: The image file to send (max 5MB)
+                recepient:
+                  type: string
+                  description: The recipient's phone number (with country code, no +)
+                  example: "911234567890"
+                receipt_num:
+                  type: string
+                  description: Receipt number for the body and button
+                  example: "12345"
+                comp_name:
+                  type: string
+                  description: Company name for the body
+                  example: "My Company"
+              required:
+                - file
+                - recepient
+                - receipt_num
+                - comp_name
+      responses:
+        '200':
+          description: Message sent successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: Message sent successfully
+                  data:
+                    type: object
+        '400':
+          description: Bad request (missing file or recipient)
+        '500':
+          description: Internal server error
