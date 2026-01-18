@@ -4,7 +4,7 @@ info:
   description: API for sending WhatsApp messages using Cloud API
   version: 1.0.0
 servers:
-  - url: https://whatsapp-messaging-j8qi.onrender.com/
+  - url: http://whatsapp-messaging-j8qi.onrender.com/
     description: Local server
 paths:
   /api/messages:

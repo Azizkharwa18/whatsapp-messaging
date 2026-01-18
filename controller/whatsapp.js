@@ -41,21 +41,19 @@ export const sendMessageUsingTemplate = async (req, res) => {
                         ]
                     },
 
-                    /*{
+                    {
                         "type": "body",
                         "parameters": [
                             {
                                 "type": "text",
-                                "parameter_name": "RECEIPT_NUM",
                                 "text": receipt_num
                             },
                             {
                                 "type": "text",
-                                "parameter_name": "COMP_NAME",
                                 "text": comp_name
                             }
                         ]
-                    },*/
+                    },
                     {
                         "type": "button",
                         "sub_type": "url",
@@ -69,7 +67,7 @@ export const sendMessageUsingTemplate = async (req, res) => {
                     }
                 ]
             }
-        };
+        }
 
         const response = await fetch(url, {
             method: 'POST',
